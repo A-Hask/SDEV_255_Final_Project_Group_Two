@@ -21,3 +21,8 @@ app.get('/', (req, res) => {
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+
+
+server.listen(3000, 'localhost', () => {
+  console.log('listening for requests on port 3000');
+});
