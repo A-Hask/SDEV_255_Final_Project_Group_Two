@@ -1,6 +1,7 @@
 const express = require('express');
-
+const morgan = require('morgan');
 const app = express();
+const PORT = process.env.port || 3030;
 
 app.set('view engine', 'ejs');
 
@@ -23,6 +24,6 @@ app.use((req, res) => {
 });
 
 
-server.listen(3000, 'localhost', () => {
+app.listen(3000, 'localhost', () => {
   console.log('listening for requests on port 3000');
 });
