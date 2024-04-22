@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
+const courseRoutes = require('./routes/courseRoutes');
 const PORT = process.env.port || 3030;
 
 app.set('view engine', 'ejs');
@@ -18,14 +19,13 @@ app.use((req, res, next) => {
   next();
 });
 
+//use courseRoutes
+app.use('/courses', courseRoutes);
+
 // routes
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home', courses });
 });
-
-app.get('/courses/create', (req, res) => {
-  res.render('create', { title: 'Create a new course' });
-})
 
 // 404 page
 app.use((req, res) => {

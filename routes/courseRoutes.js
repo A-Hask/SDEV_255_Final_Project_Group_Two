@@ -7,3 +7,4 @@ router.get('/', courseController.course_index);
 router.get('/create', courseController.course_create_get);
 router.post('/', courseController.course_create_post);
 
+module.exports = router;
