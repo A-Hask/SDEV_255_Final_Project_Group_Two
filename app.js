@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 
 // routes
 app.get('/', (req, res) => {
-  res.redirect('/courses');
+  res.render('index', { title: 'Home', courses });
 });
 
 // 404 page
