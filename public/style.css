@@ -1,4 +1,80 @@
-html {
-  height: 100%;
+:root {
+  --ovaline: #a0af84;
+  --outerSpace: #4C5B61;
+  --lavenderPink: #FFC4EB;
+  --palePurple: #FFE4FA;
+  --tiffanyBlue: #86BBBD;
+}
+
+body {
+  background-color: var(--lavenderPink);
+}
+
+/* navigation bar */
+.nav-wrapper {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  background-color: var(--tiffanyBlue);
   width: 100%;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+
+  /* style text */
+  font-family: "urbana", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 20px;
+}
+
+nav a {
+  color: var(--palePurple);
+  text-decoration: none;
+  margin: 25px;
+}
+
+.site-title {
+
+  /* text style */
+  font-family: "viktor-script", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 45px;
+  color: var(--palePurple);
+}
+
+/* footer */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--tiffanyBlue);
+}
+
+footer p {
+
+  /* style text */
+  font-size: 10px;
+    font-family: "marigny", "sans-serif";
+    font-weight: 400;
+    font-style: normal;
+    color: var(--outerSpace);
 }
