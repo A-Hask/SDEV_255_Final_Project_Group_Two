@@ -1,8 +1,10 @@
 const express = require('express');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 const app = express();
 const courseRoutes = require('./routes/courseRoutes');
 const PORT = process.env.port || 3030;
+const Course = require('./models/course');
 
 app.set('view engine', 'ejs');
 
@@ -19,18 +21,35 @@ app.use((req, res, next) => {
   next();
 });
 
+//connect to mongodb
+db_URI = 'mongodb+srv://ccornwall2:PTSuwwxNgHiV7VhN@nodetuts.kzvqhwx.mongodb.net/finalProject?retryWrites=true&w=majority&appName=nodetuts'
+mongoose.connect(db_URI)
+    .then((result) => {
+        console.log('Connected to db')})
+    .catch((err) => console.log(err));
+
 //use courseRoutes
 app.use('/courses', courseRoutes);
 
 // routes
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home', 
-  // courses 
+  Course.find()
+    .then((result) => {
+      res.render('index', { title: 'Home', courses: result});
+    })
+    .catch((err) => {
+      console.log(err);
+    })
 });
+
+app.get('/courses/create', (req, res) => {
+  res.render('create', {title: 'Create A Course'});
 });
 
 // 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+
+
 
