@@ -22,7 +22,7 @@ app.use((req, res, next) => {
 });
 
 //connect to mongodb
-db_URI = 'mongodb+srv://ccornwall2:PTSuwwxNgHiV7VhN@nodetuts.kzvqhwx.mongodb.net/finalProject?retryWrites=true&w=majority&appName=nodetuts'
+db_URI = 'mongodb+srv://ccornwall2:SDEV255GROUP2@courses.zjt5law.mongodb.net/FinalProject?retryWrites=true&w=majority&appName=Courses'
 mongoose.connect(db_URI)
     .then((result) => {
         console.log('Connected to db')})
@@ -42,6 +42,23 @@ app.get('/', (req, res) => {
     })
 });
 
+app.get('/add-course', (req, res) => {
+  const course = new Course({
+      name: 'SDEV255',
+      subject: 'Computer Science',
+      description: 'Students will learn how to create websites.',
+      credits: 3
+  });
+
+  course.save()
+      .then((result) => {
+          res.send(result)
+      })
+      .catch((err) => {
+          console.log(err);
+      });
+})
+
 app.get('/courses/create', (req, res) => {
   res.render('create', {title: 'Create A Course'});
 });
@@ -50,6 +67,7 @@ app.get('/courses/create', (req, res) => {
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+
 
 
 
