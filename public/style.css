@@ -70,21 +70,41 @@ nav a {
 /* index */
 .content h2 {
 
-  /*style text */
-  font-family: "sauna-new", sans-serif;
-  font-weight: 400;
+  /* style text */
+  font-family: "urbana", sans-serif;
+  font-weight: 700;
   font-style: normal;
+  font-size: 25px;
+  text-transform: uppercase;
+  color: var(--richBlack);
 
 }
 
 .content p {
 
   /* style text */
-    font-size: 15px;
+    font-size: 20px;
     font-family: "marigny", "sans-serif";
     font-weight: 400;
     font-style: normal;
     color: var(--richBlack);
+}
+
+.names {
+   /*style text */
+   font-family: "sauna-new", sans-serif;
+   font-weight: 400;
+   font-style: normal;
+   color: var(--outerSpace)
+}
+
+.description {
+  /* style text */
+  font-size: 20px;
+  font-family: "marigny", "sans-serif";
+  font-weight: 400;
+  font-style: normal;
+  color: var(--outerSpace);
 }
 
 /* course/create */
