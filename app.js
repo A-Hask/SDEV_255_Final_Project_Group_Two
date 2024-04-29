@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const app = express();
-const courseRoutes = require('./routes/courseRoutes');
+//const courseRoutes = require('./routes/courseRoutes');
 const PORT = process.env.port || 3030;
 const Course = require('./models/course');
 
@@ -29,10 +29,11 @@ mongoose.connect(db_URI)
     .catch((err) => console.log(err));
 
 //use courseRoutes
-app.use('/courses', courseRoutes);
+//app.use('/courses', courseRoutes);
 
-// routes
-app.get('/', (req, res) => {
+
+//routes
+app.get('/courses', (req, res) => {
   Course.find()
     .then((result) => {
       res.render('index', { title: 'Home', courses: result});
@@ -42,31 +43,56 @@ app.get('/', (req, res) => {
     })
 });
 
-app.get('/add-course', (req, res) => {
-  const course = new Course({
-      name: 'SDEV255',
-      subject: 'Computer Science',
-      description: 'Students will learn how to create websites.',
-      credits: 3
-  });
-
-  course.save()
-      .then((result) => {
-          res.send(result)
-      })
-      .catch((err) => {
-          console.log(err);
-      });
-})
-
 app.get('/courses/create', (req, res) => {
   res.render('create', {title: 'Create A Course'});
 });
+
+app.get('/', (req, res) => {
+  res.redirect('/courses');
+});
+
+
+// courses routes
+app.post('/courses', (req, res) => {
+  const course = new Course(req.body);
+
+  course.save()
+    .then(result => {
+      res.redirect('/courses');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+app.get('/courses/:id', (req, res) => {
+  const id = req.params.id;
+    Course.findById(id)
+        .then(result => {
+            res.render('details', {course : result, title: 'Course Details'})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+});
+
+app.delete('/courses/:id', (req, res) => {
+  const id = req.params.id;
+
+  Course.findByIdAndDelete(id)
+    .then(result => {
+      res.json({redirect : '/courses'})
+    })
+    .catch(err => {
+      console.log(err);
+    })
+})
 
 // 404 page
 app.use((req, res) => {
   res.status(404).render('404', { title: '404' });
 });
+
 
 
 

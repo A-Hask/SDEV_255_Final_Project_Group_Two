@@ -10,11 +10,14 @@
     <h2>All Courses</h2>
     <% if (courses.length > 0) { %>
       <% courses.forEach(course => { %>
+        <a href="/courses/<%= course._id %>" class="single">
           <h3 class="names"><%=course.name%></h3>
-          <p class="description"><%=course.description%></p>
+          <p class="description">&emsp;<%=course.description%></p>
+        </a>
+          
       <% }) %>
   <% } else { %>
-          <p>There are no courses to display at this time. </p>
+          <p class="no-classes">There are no courses to display at this time. </p>
       <% } %>
   </div>
 

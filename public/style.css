@@ -80,7 +80,7 @@ nav a {
 
 }
 
-.content p {
+.no-classes {
 
   /* style text */
     font-size: 20px;
@@ -94,22 +94,55 @@ nav a {
    /*style text */
    font-family: "sauna-new", sans-serif;
    font-weight: 400;
+   font-size: 25px;
    font-style: normal;
-   color: var(--outerSpace)
+   color: var(--richBlack)
 }
 
 .description {
   /* style text */
-  font-size: 20px;
+  font-size: 15px;
   font-family: "marigny", "sans-serif";
   font-weight: 400;
   font-style: normal;
   color: var(--outerSpace);
 }
 
+.courses a{
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  text-decoration: none;
+  border-left: 6px solid var(--ovaline);
+}
+.courses a:hover h3{
+  color: var(--ovaline);
+}
+
+ /* details styles */
+ .details{
+  position: relative;
+}
+.delete{
+  position: absolute;
+  right: 0;
+  border-radius: 25%;
+  padding: 8px;
+  background-color: var(--ovaline);
+
+  /*style text */
+  text-transform: uppercase;
+}
+.delete:hover{
+  cursor: pointer;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+
+
 /* course/create */
 .create-course {
-  padding-top: 130px;
+  padding-top: 100px;
+  padding-bottom: 2.5rem;
 }
 
 .create-course form {
@@ -143,6 +176,7 @@ textarea{
 
 .create-course button{
   margin-top: 20px;
+  padding-bottom: 20px;
   background: var(--ovaline);
   border-radius: 5px;
   color: var(--palePurple);
