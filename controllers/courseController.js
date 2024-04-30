@@ -49,9 +49,9 @@ const course_delete = (req, res) => {
 }
 
 module.exports = {
-  course_index, 
+  course_index,
+  course_create_get,  
   course_description, 
-  course_create_get, 
   course_create_post, 
   course_delete
 }

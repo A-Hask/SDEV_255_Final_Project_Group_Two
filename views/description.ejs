@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html lang="en">
 <%- include("./partials/head.ejs") %>
 
@@ -32,4 +33,36 @@
 
   </script>
 </body>
+=======
+<!DOCTYPE html>
+<%- include ('./partials/head.ejs') %>
+<html lang="en">
+    <%- include ('./partials/nav.ejs') %>
+
+    <div class="details content">
+        <h2><%= course.name %></h2>
+        <div class="content">
+            <p><%= course.description %></p>
+        </div>
+        <a class="delete" data-doc="<%=course._id %>">delete</a>
+    </div>
+    <%- include ('./partials/footer.ejs') %> 
+ 
+    <script>
+        const trashcan = document.querySelector('a.delete');
+
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/courses/${trashcan.dataset.doc}`;
+
+            fetch(endpoint, {
+                method: `DELETE`
+            })
+            .then(response => response.json())
+            .then(data => window.location.href = data.redirect)
+            .catch(err => console.log(err));
+        })
+    </script>
+
+
+>>>>>>> 97d9802 (updated css for 404 page)
 </html>

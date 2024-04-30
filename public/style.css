@@ -194,6 +194,18 @@ textarea{
   font-size: 25px;
 }
 
+/* 404 page */
+.not-found p {
+
+
+  /* style text */
+  font-size: 20px;
+  font-family: "marigny", "sans-serif";
+  font-weight: 400;
+  font-style: normal;
+  color: var(--richBlack);
+}
+
 /* footer */
 
 footer {
