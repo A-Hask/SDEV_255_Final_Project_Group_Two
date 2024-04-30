@@ -8,8 +8,8 @@ const PORT = process.env.port || 3030;
 app.set('view engine', 'ejs');
 
 // port
-app.listen(PORT, 'localhost', () => {
-  console.log('listening for requests on port 3030');
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
 
 app.use(express.static('public'));
