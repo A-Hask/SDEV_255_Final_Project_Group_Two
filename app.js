@@ -1,9 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 const app = express();
+const { requireAuth } = require('./middleware/authMiddleware');
 const courseRoutes = require('./routes/courseRoutes');
 const authRoutes = require('./routes/authRoutes');
+
 const PORT = process.env.port || 3030;
 
 app.set('view engine', 'ejs');
@@ -15,6 +18,8 @@ app.listen(PORT, () => {
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(cookieParser());
 app.use(morgan('dev'));
 app.use((req, res, next) => {
   res.locals.path = req.path;
