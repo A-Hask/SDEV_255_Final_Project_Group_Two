@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const app = express();
 const courseRoutes = require('./routes/courseRoutes');
+const authRoutes = require('./routes/authRoutes');
 const PORT = process.env.port || 3030;
 
 app.set('view engine', 'ejs');
@@ -33,6 +34,7 @@ app.use('/courses', courseRoutes);
 app.get('/', (req, res) => {
   res.redirect('/courses');
 });
+app.use(authRoutes);
 
 // 404 page
 app.use((req, res) => {
