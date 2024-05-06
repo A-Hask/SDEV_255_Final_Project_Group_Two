@@ -38,7 +38,7 @@ module.exports.signup_get = (req, res) => {
       res.status(201).json(user);
     }
     catch(err) {
-      console.log(err);
+      const errors = handleErrors(err);
       res.status(400).json({ errors });
     }
 }  
