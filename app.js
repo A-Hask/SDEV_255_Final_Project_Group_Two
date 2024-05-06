@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 const app = express();
-const { requireAuth } = require('./middleware/authMiddleware');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const courseRoutes = require('./routes/courseRoutes');
 const authRoutes = require('./routes/authRoutes');
 
@@ -33,8 +33,9 @@ mongoose.connect(db_URI)
         console.log('Connected to db')})
     .catch((err) => console.log(err));
 
+app.get('*', checkUser);
 //use courseRoutes
-app.use('/courses', courseRoutes);
+app.use('/courses', requireAuth, courseRoutes);
 
 app.get('/', (req, res) => {
   res.redirect('/courses');
