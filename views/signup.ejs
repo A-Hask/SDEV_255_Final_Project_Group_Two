@@ -11,7 +11,7 @@
   <input type="password" name="password" required>
   <div class="password error"></div>
   <label for="teacher">I am a teacher</label>
-  <input type="checkbox" name="teacher" value="teacher">
+  <input type="checkbox" name="teacher" value="true">
   <button>Sign up</button>
  </form>
 
@@ -32,11 +32,12 @@
     //get the values
     const email = form.email.value;
     const password = form.password.value;
+    const teacher = form.teacher.checked;
 
     try {
       const res = await fetch('/signup', {
         method: 'POST',
-        body: JSON.stringify({email, password}),
+        body: JSON.stringify({email, password, teacher}),
         headers: { 'Content-Type': 'application/json' }
       });
       const data = await res.json();

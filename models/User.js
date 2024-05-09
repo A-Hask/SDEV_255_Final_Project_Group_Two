@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   teacher: {
     type: Boolean
   }
-});
+},{strict: false});
 
 // fire a function before doc saved to db
 userSchema.pre('save', async function(next) {
@@ -28,7 +28,7 @@ userSchema.pre('save', async function(next) {
 });
 
 // static method to login user
-userSchema.statics.login = async function(email, password) {
+userSchema.statics.login = async function(email, password, teacher) {
   const user = await this.findOne({ email });
   if (user) {
     const auth = await bcrypt.compare(password, user.password);
