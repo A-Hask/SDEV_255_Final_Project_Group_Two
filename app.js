@@ -37,7 +37,7 @@ app.get('*', checkUser);
 //use courseRoutes
 app.use('/courses', requireAuth, courseRoutes);
 
-app.get('/', (req, res) => {
+app.get('/', requireAuth, (req, res) => {
   res.redirect('/courses');
 });
 app.use(authRoutes);
