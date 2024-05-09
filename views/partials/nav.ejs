@@ -7,7 +7,9 @@
         <% if (user) { %>
           <li>Welcome, <%= user.email %></li>
           <li><a href="/">Courses</a></li>
+        <% if (user.teacher == true) { %>
           <li><a href="/courses/create">Create a New Course</a></li>
+          <% } %>
           <li><a href="/logout">Log out</a></li>
         <% } else { %>
           <li><a href="/login">Log in</a></li>
