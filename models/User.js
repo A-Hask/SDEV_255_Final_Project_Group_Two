@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
   teacher: {
     type: Boolean
   }
-},{strict: false});
+}, {strict: false});
 
 // fire a function before doc saved to db
 userSchema.pre('save', async function(next) {

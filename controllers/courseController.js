@@ -3,8 +3,9 @@ const Course = require('../models/course');
 const course_index = (req, res) => {
   Course.find()
   .then(result => {
-    res.render('index', { title: 'Courses', courses: result });
-    })
+    res.render('index', { title: 'Courses', courses: result, user: res.locals.user });
+    const token = req.headers.cookie;
+  })
   .catch(err => {
     console.log(err);
   })

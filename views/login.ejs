@@ -50,6 +50,7 @@
                 passwordError.textContent = data.errors.password;
             }
             if (data.user) {
+                const teacher = data.teacher;
                 location.assign('/courses');
             }
         } catch (err) {
