@@ -8,6 +8,7 @@
   --richBlack: #0D1B1E;
 }
 
+
 body {
   background-color: var(--lavenderPink);
 }
@@ -228,3 +229,98 @@ footer p {
     font-style: normal;
     color: var(--richBlack);
 }
+
+/* login */
+.login-body {
+  display: grid;
+  place-content : center;
+  box-sizing: border-box;
+  height:100%;
+  width:100%;
+  margin:0;
+
+}
+form {
+  margin: auto;
+  padding: 70px;
+  width: 360px;
+  background: var(--palePurple);
+  border-radius: 10px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+
+}
+
+.login-body h2{
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+  color: var(--ovaline);
+  
+}
+
+input {
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #FFFFFF;
+  background: none;
+  transition: all 160ms in;
+
+  /* style text */
+  font-family: "sauna-new", sans-serif;
+   font-weight: 400;
+   font-size: 20px;
+   font-style: normal;
+   color: var(--ovaline)
+
+}
+
+input:hover {
+  border-color: var(--ovaline);
+}
+
+input:focus {
+  border-color: #6f935e;
+
+}
+
+form button {
+  border-radius: 0.5em;
+  background-color: var(--ovaline);
+  margin: 20px 120px;
+  border: var(--ovaline);
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+  padding: 5px 40px;
+
+
+  /* style text */
+  color: #FFF;
+  font-family: "urbana", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+}
+
+
+label {
+  display: block;
+  align-items: center;
+  cursor: text;
+  margin: 20px 0 10px;
+
+  /* style text */
+  font-family: "sauna-new", sans-serif;
+   font-weight: 400;
+   font-size: 20px;
+   font-style: normal;
+   color: var(--ovaline)
+}
+
+.checkbox {
+  margin: 0px;
+}
+
+form a {
+  color: var(--ovaline);
+}
+
