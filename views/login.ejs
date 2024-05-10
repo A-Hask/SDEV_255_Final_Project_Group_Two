@@ -1,17 +1,22 @@
 <%- include('./partials/head.ejs') %>
 
-    <%- include("./partials/nav.ejs") %>
-
-    <form action="/login">
-        <h2>Log in</h2>
+<div class="login-body">
+    <form class="content" action="/login">
+        <h2>Welcome Back!</h2>
         <label for="email">Email</label>
         <input type="test" name="email" required>
         <div class="email error"></div>
+
+        
         <label for="password">Password</label>
         <input type="password" name="password" required>
         <div class="password error"></div>
+        <a href="/signup"> Don't have an account yet?</a>
+        
         <button>Log in</button>
     </form>
+</div>
+    
       
 <%- include('./partials/footer.ejs') %>
 

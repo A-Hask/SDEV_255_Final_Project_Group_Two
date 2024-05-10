@@ -1,5 +1,6 @@
 <%- include('./partials/head.ejs') %>
 
+<<<<<<< HEAD
   <%- include("./partials/nav.ejs") %>
 
  <form action="/signup">
@@ -14,6 +15,24 @@
   <input type="checkbox" name="teacher" value="true">
   <button>Sign up</button>
  </form>
+=======
+<div class="login-body">
+  <form action="/signup" class="content">
+    <h2>Nice to Meet You!</h2>
+    <label for="email">Email</label>
+    <input type="text" name="email" required>
+    <div class="email error"></div>
+    <label for="password">Password</label>
+    <input type="password" name="password" required>
+    <div class="password error"></div>
+    <label for="teacher">I am a teacher</label>
+    <input type="checkbox" name="teacher" value="teacher" class="checkbox">
+    <a href="/login">Already have an account?</a>
+    <button>Sign up</button>
+   </form>
+</div>
+ 
+>>>>>>> ac86e45 (updated css for login and signup)
 
  <%- include('./partials/footer.ejs') %>
 
