@@ -290,7 +290,7 @@ form button {
   margin: 20px 120px;
   border: var(--ovaline);
   box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
-  padding: 5px 35px;
+  padding: 5px 40px;
 
 
   /* style text */
@@ -299,7 +299,6 @@ form button {
   font-weight: 400;
   font-style: normal;
   font-size: 25px;
-  text-transform: uppercase;
 }
 
 
