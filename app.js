@@ -40,6 +40,7 @@ app.use('/courses', requireAuth, courseRoutes);
 app.get('/', requireAuth, (req, res) => {
   res.redirect('/courses');
 });
+
 app.use(authRoutes);
 
 // 404 page
