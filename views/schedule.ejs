@@ -1,0 +1,26 @@
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+
+  <%- include('./partials/nav.ejs') %>
+
+  <div class="schedule content">
+    <h2>Schedule</h2>
+    <% if (courses.length > 0) { %>
+        <% courses.forEach(course => { %>
+          <a href="/schedule/<%= course._id %>" class="single">
+            <h3 class="names"><%=course.name%></h3>
+            <p class="description">&emsp;<%=course.description%></p>
+          </a>
+        <% }) %>
+    <% } else { %>
+            <p class="no-classes">There are no courses to display at this time. </p>
+        <% } %>
+  </div>
+
+  <%- include('./partials/footer.ejs') %>
+</body>
+    
+</html>

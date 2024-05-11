@@ -17,6 +17,9 @@ const userSchema = new mongoose.Schema({
   },
   teacher: {
     type: Boolean
+  },
+  schedule: {
+    type: Array,
   }
 }, {strict: false});
 
