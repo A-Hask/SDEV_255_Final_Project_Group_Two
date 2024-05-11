@@ -9,16 +9,15 @@
   <div class="schedule content">
     <h2>Schedule</h2>
     <% if (user.schedule.length > 0) { %>
-        <% courses.forEach(course => { %>
-          <a href="/schedule/<%= course._id %>" class="single">
-            <h3 class="names"><%=course.name%></h3>
-            <p class="description">&emsp;<%=course.description%></p>
-          </a>
+        <% schedule.forEach(schedule => { %>
+          <p><%=course.name %></p>
         <% }) %>
     <% } else { %>
             <p class="no-classes">There are no courses in your schedule at this time. </p>
         <% } %>
   </div>
+
+  
 
   <%- include('./partials/footer.ejs') %>
 </body>
