@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Course = require('../models/Course');
 const jwt = require('jsonwebtoken');
 
 // handle errors
@@ -50,11 +51,23 @@ module.exports.login_get = (req, res) => {
   res.render('login');
 }
 
+module.exports.schedule_get = (req, res) => {
+  // res.render('schedule');
+  Course.find()
+  .then(result => {
+    res.render('index', { title: 'Courses', courses: result, user: res.locals.user });
+    const token = req.headers.cookie;
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
 module.exports.signup_post = async (req, res) => {
-  const { email, password, teacher } = req.body;
+  const { email, password, teacher, schedule } = req.body;
 
   try {
-    const user = await User.create({ email, password, teacher });
+    const user = await User.create({ email, password, teacher, schedule });
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ user: user._id });

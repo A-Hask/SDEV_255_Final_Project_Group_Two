@@ -10,6 +10,9 @@
         <% if (user.teacher) { %>
           <li><a href="/courses/create">Create a New Course</a></li>
           <% } %>
+        <% if (!user.teacher) { %>
+          <li><a href="/schedule">My Schedule</a></li>
+          <% } %>
           <li><a href="/logout">Log out</a></li>
         <% } else { %>
           <li><a href="/login">Log in</a></li>
