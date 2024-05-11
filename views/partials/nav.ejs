@@ -5,7 +5,7 @@
       </div>  
       <ul>
         <% if (user) { %>
-          <li>Welcome, <%= user.email %></li>
+          <li id="welcome">Welcome, <%= user.email %></li>
           <li><a href="/">Courses</a></li>
         <% if (user.teacher) { %>
           <li><a href="/courses/create">Create a New Course</a></li>
