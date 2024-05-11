@@ -1,5 +1,4 @@
 const User = require('../models/User');
-const Course = require('../models/Course');
 const jwt = require('jsonwebtoken');
 
 // handle errors
