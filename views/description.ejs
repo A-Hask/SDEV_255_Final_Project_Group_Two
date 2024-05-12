@@ -20,8 +20,9 @@
     <script>
         
         //"delete" button script
-        document.querySelector('button.delete')?.addEventListener('click', (e) => {
-            const endpoint = `/courses/${e.target.dataset.doc}}`;
+        const trashcan = document.querySelector('a.delete');
+        trashcan.addEventListener('click', (e) => {
+            const endpoint = `/courses/${trashcan.dataset.doc}`;
 
             fetch(endpoint, {
                 method: `DELETE`,
