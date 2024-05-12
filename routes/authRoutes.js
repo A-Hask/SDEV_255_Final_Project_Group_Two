@@ -8,7 +8,6 @@ authRouter.post('/signup', authController.signup_post);
 authRouter.get('/login', authController.login_get);
 authRouter.post('/login', authController.login_post);
 authRouter.get('/schedule', authController.schedule_get);
-authRouter.post('/schedule', authController.schedule_post);
 authRouter.get('/logout', authController.logout_get);
 
 module.exports = authRouter;

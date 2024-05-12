@@ -8,15 +8,8 @@
 
   <div class="schedule content">
     <h2>Schedule</h2>
-    <% if (user.schedule.length > 0) { %>
-        <% schedule.forEach(schedule => { %>
-          <p><%=course.name %></p>
-        <% }) %>
-    <% } else { %>
             <p class="no-classes">There are no courses in your schedule at this time. </p>
             <a class="btn" href="/">Back to course list</a>
-
-        <% } %>
   </div>
 
   
