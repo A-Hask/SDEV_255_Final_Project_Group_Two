@@ -45,7 +45,7 @@ nav ul {
 
 }
 
-nav a {
+nav a, #welcome {
   color: var(--palePurple);
   text-decoration: none;
 }
