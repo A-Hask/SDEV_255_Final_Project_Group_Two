@@ -40,7 +40,6 @@ const createToken = (id) => {
   });
 };
 
-
 // controller actions
 module.exports.signup_get = (req, res) => {
   res.render('signup');
@@ -52,6 +51,27 @@ module.exports.login_get = (req, res) => {
 
 module.exports.schedule_get = (req, res) => {
   res.render('schedule');
+}
+
+module.exports.schedule_post = async (req, res) => {
+  const { courseId } = req.body;
+  const userId = req.params.userId;
+
+  try {
+      const user = await User.findOneAndUpdate(
+          { _id: userId },
+          { $push: { schedule: courseId } },
+          { new: true }
+      );
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+      res.status(200).json(user);
+  } catch (error) {
+      console.error(error);
+      res.status(400).json({ error: 'Failed to add course to schedule' });
+  }
+
 }
 
 module.exports.signup_post = async (req, res) => {
