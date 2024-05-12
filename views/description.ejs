@@ -9,46 +9,50 @@
         <p><%= course.credits %> credits</p>
         <p><%= course.description %></p>
         <% if (user.teacher) { %>
-        <a class="delete" data-doc="<%=course._id %>" src="../public/trashcan.svg">Delete</a>
+        <a class="delete" href="/" data-doc="<%=course._id %>" src="../public/trashcan.svg">Delete</a>
         <% } else { %>
-        <a class="add" data-doc="<%=course._id %>" src="../public/plus.svg">Add to my schedule</a>
+        <a class="add" href ="/schedule" data-doc="<%=course._id %>" src="../public/plus.svg">Add to my schedule</a>
         <% } %>
     </div>
 
     <%- include ('./partials/footer.ejs') %> 
  
     <script>
-        const trashcan = document.querySelector('a.delete');
-
-        trashcan.addEventListener('click', (e) => {
-            const endpoint = `/courses/${trashcan.dataset.doc}`;
+        
+        //"delete" button script
+        document.querySelector('button.delete')?.addEventListener('click', (e) => {
+            const endpoint = `/courses/${e.target.dataset.doc}}`;
 
             fetch(endpoint, {
-                method: `DELETE`
+                method: `DELETE`,
             })
             .then(response => response.json())
             .then(data => window.location.href = data.redirect)
             .catch(err => console.log(err));
         })
-    </script>
 
-<script>
-    const plus = document.querySelector('a.add');
-    const schedule = user.schedule;
+        //"add to schedule" button script
+        document.querySelector('button.add')?.addEventListener('click', (e) => {
+        const courseId = e.target.dataset.doc;
+        const userEmail = '<%= user.email %>'; 
+        const endpoint = `/schedule`;
 
-    plus.addEventListener('click', (e) => {
         fetch(endpoint, {
-            method: `POST`
+            method: `POST`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: userEmail, course: courseId })
         })
-        .then(schedule.push(plus.dataset.doc));
-        res.redirect('/schedule');
-        // const endpoint = `/schedule/${plus.dataset.doc}`;
-
-        // .then(response => response.json())
-        // .then(data => window.location.href = data.redirect)
-        // .catch(err => console.log(err));
+        .then(response => response.json())
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(err => console.log(err));
     })
-</script>
+    </script>
 
 
 </html>
