@@ -36,11 +36,12 @@
     const email = form.email.value;
     const password = form.password.value;
     const teacher = form.teacher.checked;
+    const schedule = [];
 
     try {
       const res = await fetch('/signup', {
         method: 'POST',
-        body: JSON.stringify({email, password, teacher}),
+        body: JSON.stringify({email, password, teacher, schedule}),
         headers: { 'Content-Type': 'application/json' }
       });
       const data = await res.json();

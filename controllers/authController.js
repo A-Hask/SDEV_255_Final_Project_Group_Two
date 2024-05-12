@@ -40,7 +40,6 @@ const createToken = (id) => {
   });
 };
 
-
 // controller actions
 module.exports.signup_get = (req, res) => {
   res.render('signup');
@@ -50,11 +49,36 @@ module.exports.login_get = (req, res) => {
   res.render('login');
 }
 
-module.exports.signup_post = async (req, res) => {
-  const { email, password, teacher } = req.body;
+module.exports.schedule_get = (req, res) => {
+  res.render('schedule');
+}
+
+module.exports.schedule_post = async (req, res) => {
+  const { courseId } = req.body;
+  const userId = req.params.userId;
 
   try {
-    const user = await User.create({ email, password, teacher });
+      const user = await User.findOneAndUpdate(
+          { _id: userId },
+          { $push: { schedule: courseId } },
+          { new: true }
+      );
+      if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+      }
+      res.status(200).json(user);
+  } catch (error) {
+      console.error(error);
+      res.status(400).json({ error: 'Failed to add course to schedule' });
+  }
+
+}
+
+module.exports.signup_post = async (req, res) => {
+  const { email, password, teacher, schedule } = req.body;
+
+  try {
+    const user = await User.create({ email, password, teacher, schedule });
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ user: user._id });
