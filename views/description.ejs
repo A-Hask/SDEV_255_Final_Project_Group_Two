@@ -4,18 +4,24 @@
     <%- include ('./partials/nav.ejs') %>
 
     <div class="details content">
-        <h2><%= course.name %></h2>
+        <h2><%= course.subject %></h2>
+        <h3><%= course.name %></h3>
+        <p><%= course.credits %> credits</p>
         <p><%= course.description %></p>
-        <a class="delete" data-doc="<%=course._id %>" src="../public/trashcan.svg">delete</a>
+        <% if (user.teacher) { %>
+        <a class="delete" href="/" data-doc="<%=course._id %>" src="../public/trashcan.svg">Delete</a>
+        <% } else { %>
+        <a class="add" href ="/schedule" data-doc="<%=course._id %>" src="../public/plus.svg">Add to my schedule</a>
+        <% } %>
     </div>
     <%- include ('./partials/footer.ejs') %> 
  
     <script>
+        
+        //"delete" button script
         const trashcan = document.querySelector('a.delete');
-
         trashcan.addEventListener('click', (e) => {
             const endpoint = `/courses/${trashcan.dataset.doc}`;
-
             fetch(endpoint, {
                 method: `DELETE`
             })
@@ -23,6 +29,28 @@
             .then(data => window.location.href = data.redirect)
             .catch(err => console.log(err));
         })
+
+        //"add to schedule" button script
+        document.querySelector('button.add')?.addEventListener('click', (e) => {
+        const courseId = e.target.dataset.doc;
+        const userEmail = '<%= user.email %>'; 
+        const endpoint = `/schedule`;
+
+        fetch(endpoint, {
+            method: `POST`,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: userEmail, course: courseId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(err => console.log(err));
+    })
     </script>
 
 

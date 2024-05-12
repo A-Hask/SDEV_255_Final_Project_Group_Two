@@ -45,7 +45,7 @@ nav ul {
 
 }
 
-nav a {
+nav a, #welcome, #btn {
   color: var(--palePurple);
   text-decoration: none;
 }
@@ -122,7 +122,7 @@ nav a {
   position: relative;
 }
 
-.delete{
+.delete, .add, .btn{
   position: absolute;
   right: 0;
   border-radius: 25%;
